@@ -2,5 +2,5 @@
 
 int main()
 {
-    printf("rahul");
+    printf("rahul and krunal");
 }
