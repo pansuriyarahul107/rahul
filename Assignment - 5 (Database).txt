@@ -1,0 +1,373 @@
+                                                                MODULE: 5 (Database)
+                                                              *----------------------*
+
+1. What do you understand By Database
+ 
+Ans:- Database is a Collecation of inter-related data and 
+      management system is a set of programs to store abd retrive those data.
+
+
+2. What is Normalization?
+
+Ans:- Normalization is the process of effixicntly organizating data in a database.
+    - Normalization is used for mainly two purpose.
+     - Eliminating useless data.
+     - Ensuring data dependencies make sense.
+
+
+3. What is Difference between DBMS and RDBMS?
+
+Ans:-   DBMS	                                                                     RDBMS
+
+1 DBMS stores data as file.	                                     1 RDBMS stores data in tabular form.
+2 Data elements need to access individually.	                     2 Multiple data elements can be accessed at the same time.
+3 No relationship between data.	                                     3 Data is stored in the form of tables which are related to each othe
+4 DBMS does not support distributed database.	                     4 RDBMS supports distributed database.
+5 It deals with small quantity of data.	                             5 It deals with large amount of data.
+6 Data redundancy is common in this model.	                     6 Keys and indexes do not allow Data redundancy.
+7 It is used for small organization and deal with small data.	     7 It is used to handle large amount of data.
+8 Not all Codd rules are satisfied.	                             8 All 12 Codd rules are satisfied.
+9 Security is less	                                             9 More security measures provided.
+10  It supports single user.	                                    10 It supports multiple users.
+11  Data fetching is slower for the large amount of data.	    11  Data fetching is fast because of relational approach.
+12  The data in a DBMS is subject to low security levels            12  There exists multiple levels of data security in a RDBMS.
+13  with regards to data manipulation.	                            13  Higher software and hardware necessities.
+14  Low software and hardware necessities.	                    14  Examples: MySQL, PostgreSQL, SQL Server, Oracle, Microsoft Access etc.
+    Examples: XML, Window Registry, Forxpro, dbaseIIIplus etc.
+
+
+
+4. What is MF Cod Rule of RDBMS Systems?
+
+Ans:- Codd applied rigorous mathematical theories (primarily set theory) to the management of data
+      ,and he compiled a list of criteria a database must meet to be considered relational.
+
+
+
+
+
+5. What do you understand By Data Redundancy?
+
+Ans:-Data redundancy is when multiple copies of the same information are stored in more than one place at a time.  
+     This challenge plagues organizations of all sizes in all industries and leads to elevated storage costs, 
+     errors, and compromised analytics.
+
+
+
+6. What is DDL Interpreter?
+
+Ans:- Creat - creates a new table a View of a table or other object in database.
+      
+      Alter - Modifies an existing database object,such as a table.
+
+      Drop  - Deletes an entire table, a view of a table or Other object in the database.
+
+      Truncate -  Remove all data from table , table structure remins as it is.
+
+
+
+7. What is DML Compiler in SQL?
+
+Ans:- A DML (data manipulation language) refers to a computer programming language that allows you to add (insert), 
+      delete (delete), and alter (update) data in a database.
+
+    Insert - Creates a record
+    Update - Modifyes record
+    Delete - Deletes record
+
+
+8. What is SQL Key Constraints writing an Example of SQL Key Constraints
+
+Ans:- Constraints can be specified when the table is created with the CREATE TABLE statement, 
+      or after the table is created with the ALTER TABLE statement.
+
+     --:for Example:--
+     
+     CREATE TABLE table achutam (id int primary key auto_increment,name varchar(20),email varchar(50);
+
+         
+
+
+9. What is save Point? How to create a save Point write a Query?
+
+Ans:- A SAVEPOINT is a logical rollback point in a transaction. Usually, when you execute the ROLLBACK command,
+      it undoes the changes until the last COMMIT. But, if you create save points you can partially roll the transaction back to these points. 
+      You can create multiple save points between two commits.
+
+
+    --:for Example:--
+
+     delete from emp where id = 2;
+
+       savepoint a;
+
+     delete from emp where id = 4;
+
+      commit;
+   
+     rollback to a;  
+  
+
+     
+
+
+10.What is trigger and how to create a Trigger in SQL?
+
+Ans:- A trigger is a stored procedure in a database that automatically invokes whenever a special event in the database occurs. 
+      For example, a trigger can be invoked when a row is inserted into a specified table or when specific table columns are updated 
+      in simple words a trigger is a collection of SQL statements with particular names that are stored in system memory. 
+      It belongs to a specific class of stored procedures that are automatically invoked in response to database server events. 
+      Every trigger has a table attached to it.
+
+      Because a trigger cannot be called directly, unlike a stored procedure, it is referred to as a special procedure.
+      A trigger is automatically called whenever a data modification event against a table takes place, 
+      which is the main distinction between a trigger and a procedure. On the other hand, a stored procedure must be called directly.
+
+
+   -> The following are the key differences between triggers and stored procedures:
+
+     - Triggers cannot be manually invoked or executed.
+     - There is no chance that triggers will receive parameters.
+     - A transaction cannot be committed or rolled back inside a trigger.
+
+
+
+                                   ****SQL Queries****
+                                   -------------------
+
+1. Create Table Name : Student and Exam
+
+  student Table
+-------------------
+- Create table student (Rollno int primary key auto_increment,Name varchar(20),Branch Varchar(50));
+
+  Exam table
+---------------
+- Create table Exam (s_code varchar(20),Marks int,P_code varchar(20),Rollno int,Foreign key(Rollno) References student(Rollno));
+
+ 
+
+2. Create table given below: Employee and IncentiveTable
+ 
+
+-- create a table
+CREATE TABLE employee (
+  E_id INTEGER PRIMARY KEY,
+  first_name VARCHAR(30),
+  last_name VARCHAR(30),
+  salary INTEGER,
+  joining_date date,
+  department VARCHAR(20)
+);
+
+
+
+
+
+-- insert some values
+INSERT INTO employee VALUES (1, 'Ryan', 'Abdul',33000,'22-07-01','Banking');
+INSERT INTO employee VALUES (2, 'Michael', 'Clark',25000,'21-05-21','Banking');
+INSERT INTO employee VALUES (3, 'Roy', 'Thomas',27000,'23-02-15','Insurance');
+INSERT INTO employee VALUES (4, 'Tom', 'Jose',13000,'25-10-05','Banking');
+INSERT INTO employee VALUES (5, 'Jerry', 'Pinto',45500,'22-07-02','Banking');
+INSERT INTO employee VALUES (6, 'Philip', 'Mathew',750000,'22-07-02','Services');
+INSERT INTO employee VALUES (7, 'TestName1', '123',650000,'22-07-02','Services');
+INSERT INTO employee VALUES (8, 'TestName2', 'Lname%',600000,'22-07-02','Insurance');
+SELECT*FROM employee;
+
+
+
+
+
+SELECT first_name, last_name, salary from employee;
+SELECT UPPER(first_name)  FROM employee;
+SELECT DISTINCT department from employee;
+SELECT SUBSTR(LAST_NAME,-3) FROM employee;
+
+
+
+CREATE TABLE incentives (
+  E_id INTEGER PRIMARY KEY,
+  incentive_date date,
+  incentive_amount integer
+);
+
+
+
+
+INSERT INTO incentives VALUES (1,'23-06-08',34000);
+INSERT INTO incentives VALUES (2,'19-01-03',45000);
+INSERT INTO incentives VALUES (3,'20-06-19',23000);
+INSERT INTO incentives VALUES (4,'21-12-27',32000);
+INSERT INTO incentives VALUES (5,'22-04-14',14000);
+SELECT*FROM incentives;
+
+
+
+3. Get First_Name from employee table using Tom name “Employee Name”.
+
+Ans:-SELECT FIRST_NAME “Tom_name” FROM EMPLOYEE;
+
+4. Get FIRST_NAME, Joining Date, and Salary from employee table.
+
+Ans:- SELECT first_name,joining_date,salary FROM employee;
+
+
+
+5. Get all employee details from the employee table order by First_Name Ascending and Salary descending?
+
+Ans:- SELECT * FROM employee ORDER BY first_name;(Ascending)
+Ans:- SELECT * FROM employee ORDER BY salary DESC;(Salary descending)
+
+
+6. Get employee details from employee table whose first name contains ‘J’.
+
+Ans:- SELECT * FROM EMPLOYEE WHERE FIRST_NAME LIKE 'J%';
+
+
+
+7. Get department wise maximum salary from employee table order by salaryascending?
+
+Ans:- SELECT DEPARTMENT,MAX(SALARY) MAXSALARY FROM EMPLOYEE GROUP BY DEPARTMENT ORDER BY MAXSALARY ASC;
+
+
+
+9. Select first_name, incentive amount from employee and incentives tableforthose employees who have incentives and incentive amount greater than 3000.
+
+Ans:- SELECT e.first_name,i.insentive_amount FROM employee e JOIN incentive i on e.E_id=i.employee_ref_id WHERE i.insentive_amount>3000; 
+
+
+10. Create After Insert trigger on Employee table which insert records inviewtable
+
+*****Create Table*******
+use achutam;
+CREATE table Salesperson(SNO int PRIMARY KEY,SNAME varchar (30),CITY varchar (20),COMM Float);
+
+
+******Insert value******
+
+INSERT INTO `salesperson` (`SNO`, `SNAME`, `CITY`, `COMM`) VALUES ('1001', 'Peel', 'London', '.12'), ('1002', 'Serres', 'San Jose', '.13'), ('1004', 'Motika', 'London', '.11'), ('1007', 'Rafkin', 'Barcelona', '.15'), ('1003', 'Axelrod', 'New York', '.1');
+
+
+*****Create Table*******
+
+use achutam;
+CREATE TABLE Customer (CNM int PRIMARY KEY,CNAME Varchar(30),CITY varchar(20),RATING int,SNO int,FOREIGN KEY(SNO) REFERENCES salesperson(SNO));
+
+
+******Insert value******
+
+INSERT INTO `customer` (`CNM`, `CNAME`, `CITY`, `RATING`, `SNO`) VALUES ('201', 'Hoffman', 'London', '100', '1001'), ('202', 'Giovanne', 'Roe', '200', '1003'), ('203', 'Liu', 'San Jose', '300', '1002'), ('204', 'Grass', 'Barcelona', '100', '1002'), ('206', 'Clemens', 'London', '300', '1007'), ('207', 'Pereira', 'Roe', '100', '1004');
+
+
+
+12.Retrieve the below data from above table
+
+
+13.All orders for more than $1000.
+
+
+
+14.Names and cities of all salespeople in London with commission above 0.12
+
+Ans:- Select sname, CITY from salesperson where COMM < 0.12 and CITY = "LONDON";
+      Select sname, CITY from salesperson where COMM > 0.12 and CITY = "LONDON";
+
+
+15.All salespeople either in Barcelona or in London
+
+Ans:- Select sname, city from salesperson where city in ("Barcelona","London");
+
+
+16.All salespeople with commission between 0.10 and 0.12. (Boundary valuesshould be excluded).
+
+Ans:- Select sname, comm from salesperson where comm > 0.10 and comm < 0.12;
+
+
+
+17.All customers excluding those with rating <= 100 unless they are located inRome
+
+Ans:- Select cname from customer where rating <= 100 or city = "Rome";
+
+
+
+18. Write a SQL statement that displays all the information about allsalespeople
+
+Ans:- create table salespepole(salesman_id int primary key, Name varchar(30),City varchar(20),Commission Float);
+
+      INSERT INTO `salespeople` (`salesman_id`, `Name`, `City`, `Commision`) VALUES 
+      ('5001', 'James Hoog', 'New York', '0.15'), ('5002', 'Nail Knite','Paris', '0.13'), 
+      ('5005', 'Pit Alex', 'London', '0.11'), ('5006', 'Mc Lyon', 'Paris', '0.14'), 
+      ('5007', 'Paul Adam', 'Rome', '0.13'), ('5003', 'Louson Hen', 'San Jose', '0.12');
+
+
+19. From the following table, write a SQL query to find orders that aredelivered by a salesperson with ID. 5001. Return ord_no, ord_date,
+    purch_amt.
+
+Ans:- Sample table: orders 
+      
+      create table Orders(Ord_no int primary key,Purch_amt Float,Ord_date Date,Customer_id int,Salesman_id int,Foreign key (salesman_id),Referance 
+      salespeople(salesman_id));
+
+
+      INSERT INTO `orders` (`Ord_no`, `Purch_amt`, `Ord_date`, `Custemer_id`, `Salesman_id`) VALUES ('70001', '150.5', '2012-10-05', '3005', '5002'), ('70009', '270.65', '2012-09-10', '3001', '5005'), ('70002', '65.26', '2012-10-05', '3002', '5001'), ('70004', '110.5', '2012-08-17', '3009', '5003'), ('70007', '948.5', '2012-09-10', '3005', '5002'), ('70005', '2400.6', '2012-07-27', '3007', '5001'), ('70008', '5760', '2012-09-10', '3002', '5001'), ('70010', '1983.43', '2012-10-10', '3004', '5006'), ('70003', '2480.4', '2012-10-10', '3009', '5003'), ('70012', '250.45', '2012-06-27', '3008', '5002'), ('70011', '75.29', '2012-08-17', '3003', '5007'), ('70013', '3045.6', '2012-04-25', '3002', '5001');
+
+
+  SELECT ord_no, ord_date, purch_amt FROM orders WHERE salesman_id=5001;
+  SELECT ord_no, ord_date, purch_amt FROM orders WHERE salesman_id=5002;
+  SELECT ord_no, ord_date, purch_amt FROM orders WHERE salesman_id=5003;
+
+
+
+
+20. From the following table, write a SQL query to select a range ofproducts whose price is in the range Rs.200 to Rs.600. Begin and end
+    values are included. Return pro_id, pro_name, pro_price, and pro_com.
+
+ANS:-                                    *******item_mast table*********
+
+
+
+    CREATE TABLE item_mast(PRO_ID INT PRIMARY KEY,PRO_NAME VARCHAR(30),PRO_PRICE FLOAT,PRO_COM INT);
+
+
+                                             *******item_mast table Insert value *********
+
+     INSERT INTO `item_mast` (`PRO_ID`, `PRO_NAME`, `PRO_PRICE`, `PRO_COM`) VALUES ('101', 'Mother Borad ', '3200.00', '15'), ('102', 'Key Borad', '450.00', '16'), ('103', 'Zip drive', '250.00', '14'), ('104', 'Speaker', '550.00', '16'), ('105', 'Monitor', '5000.00', '11'), ('106', 'DVD drive', '900.00', '12'), ('107', 'CD drive', '800.00', '12'), ('108', 'Printer', '2600.00', '13'), ('109', 'Refil cartridge', '350.00', '13'), ('110', 'Mouse', '250.00', '12');
+
+
+
+    SELECT * FROM item_mast WHERE pro_price BETWEEN 200 AND 600;
+
+
+
+21. From the following table, write a SQL query to calculate the average price for a manufacturer code of 16. Return avg
+
+Ans:- SELECT AVG (PRO_PRICE) FROM item_mast WHERE PRO_COM = 16;
+      SELECT AVG (PRO_PRICE) FROM item_mast WHERE PRO_COM = 12;
+      SELECT AVG (PRO_PRICE) FROM item_mast WHERE PRO_COM = 13;
+
+
+
+22. From the following table, write a SQL query to display the pro_name as 'Item Name' and pro_priceas 'Price in Rs.'
+
+Ans:- SELECT pro_name as "Item Name", pro_price AS "Price in Rs." FROM item_mast;
+
+
+
+
+23. From the following table, write a SQL query to find the items whose prices are higher than or equal to $250. Order the result by product price in
+    descending, then product name in ascending. Return pro_name and pro_price.
+
+
+Ans:-  SELECT pro_name, pro_price FROM item_mast WHERE pro_price >= 250 ORDER BY pro_price DESC, pro_name; (Descending)
+       SELECT pro_name, pro_price FROM item_mast WHERE pro_price >= 250 ORDER BY pro_price , pro_name;     (Ascending)
+
+
+
+
+24. From the following table, write a SQL query to calculate average price of the items for each company. Return average price and companycode.
+
+Ans:- SELECT AVG(pro_price), pro_com FROM item_mast GROUP BY pro_com;
+
+
+
